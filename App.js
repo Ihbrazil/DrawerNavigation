@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-export default function App() {
+import TelaCorNormal from "./componentes/TelaCorNormal/index.js";
+import TelaCorInvertida from "./componentes/TelaCorInvertida/index.js";
+
+const Drawer = createDrawerNavigator();
+
+export default function App () {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    <NavigationContainer >
+      <Drawer.Navigator>
+        <Drawer.Screen name="Cores Normais" component = { TelaCorNormal } />
+        <Drawer.Screen name="Cores Invertidas" component = { TelaCorInvertida } />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  )
+};
